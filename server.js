@@ -4,20 +4,22 @@ const app = express();
 let count = 0;
 let popularity = {};
 
+app.use('/static', express.static(path.join(__dirname, 'pokemon-data')))
+
 let pokemons = require('./pokemon-data/pokemons.json');
-let dict = {}
+
 for (pokemon of pokemons) {
     popularity[pokemon.id] = 0;
 }
 
 function getMax3(arr) {
     // Create items array
-    var items = Object.keys(arr).map(function (key) {
+    var items = Object.keys(arr).map(function(key) {
         return [key, arr[key]];
     });
 
     // Sort the array based on the second element
-    items.sort(function (first, second) {
+    items.sort(function(first, second) {
         return second[1] - first[1];
     });
 
@@ -26,9 +28,9 @@ function getMax3(arr) {
 }
 
 app.get('/pokemons/:id', (req, res) => {
-    
+
     var currentId = req.params.id;
-    
+
     res.send(pokemons[currentId - 1])
 });
 
