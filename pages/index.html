@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<style>
+    body {
+        background-image: url(../bcgknd.jpg);
+        background-repeat: repeat-x repeat-y;
+
+    }
+</style>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Main page</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 text-center mt-5">
+                <h1>Welcome to Pok&#233;dex</h1>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 mt-2">
+                <p>
+                    Every Pokémon creature has an array of stats. HP (Hit Points) is a Pokémon's life force. If your
+                    Pokémon's HP hits zero, it faints and is no longer usable in battle (it can still use Hidden
+                    Machines, though). The Speed stat decides which Pokémon will make the first move in battle. This
+                    stat can be critical in long battles.
+
+                    Attack and Special Attack measure the strength of moves used by your Pokémon; the higher this is,
+                    the more damage you will do to opponents. Attack corresponds to moves in the Physical category,
+                    while Special Attack corresponds to Special moves.
+
+                    Similarly, Defense and Special Defense measure the ability to take attacks from other Pokémon; the
+                    higher the stat is, the fewer Hit Points will be lost when attacked. Defense corresponds to moves in
+                    the Physical category, while Special Defense corresponds to Special moves.
+                </p>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 text-center mt-5">
+                <a href="/pokemons" class="btn btn-secondary">View all Pok&#233;mons</a>
+            </div>
+            <div class="col-2"></div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8 text-center mt-5">
+                <table class="table table-borderless">
+                    <caption style="caption-side: top; font-size: 30px;line-height: 36px;color: black;"
+                        class="text-center">
+                        Most viewed Pok&#233;mons</caption>
+                    <tbody>
+                        <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                            <th scope="row"></th>
+                            <td class="w-25">
+                                <img src="../pokemon-data/images/001.png" class="img-fluid" alt="firstImg">
+                            </td>
+                            <td id="firstMaxPop"></td>
+                        </tr>
+                        <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                            <th scope="row"></th>
+                            <td class="w-25">
+                                <img src="../pokemon-data/images/002.png" class="img-fluid" alt="secondImg">
+                            </td>
+                            <td id="secondMaxPop">
+                        </tr>
+                        <tr style="line-height: 25px; min-height: 25px; height: 25px;">
+                            <th scope="row"></th>
+                            <td class="w-25">
+                                <img src="../pokemon-data/images/003.png" class="img-fluid" alt="thirdImg">
+                            </td>
+                            <td id="thirdMaxPop">
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+    </div>
+
+    <script>
+        // fetch('/pokemons/1', { method: 'POST' });
+        function printMax3(elem) {
+            
+            var retVal = "";
+            if (elem[0][1] != 0) {
+                fetch('/pokemons/' + elem[0][0]).then(res => res.json()).then(x => document.getElementById("firstMaxPop").innerHTML = x.name);
+            }
+            if (elem[1][1] != 0) {
+                fetch('/pokemons/' + elem[1][0]).then(res => res.json()).then(x => document.getElementById("secondMaxPop").innerHTML = x.name);
+            }
+            if (elem[2][1] != 0) {
+                fetch('/pokemons/' + elem[2][0]).then(res => res.json()).then(x => document.getElementById("thirdMaxPop").innerHTML = x.name);
+            }
+        }
+
+        fetch("/max3").then(res => res.json()).then(printMax3);
+        
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
