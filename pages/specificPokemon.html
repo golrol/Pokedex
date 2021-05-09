@@ -23,9 +23,6 @@
         <li class="list-group nav-item mt-1">
             <a class="nav-link" href="/pokemons">All Pok&#233;mons</a>
         </li>
-        <li class="list-group nav-item mt-1">
-            <a class="nav-link" href="../#mostViewed">Most viewed Pok&#233;mons</a>
-        </li>
     </ul>
 
     <!-- Create a pokemon page template(updated in script). -->
@@ -38,10 +35,10 @@
             <div class="col-2"></div>
         </div>
 
-        <div class="row text-center">
+        <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <img id="pokImg" src="" alt="" class="mt-5">
+                <img id="pokImg" src="" alt="" class="mt-3">
             </div>
             <div class="col-2"></div>
         </div>
@@ -49,7 +46,7 @@
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8">
-                <ul id="pokTypes" class="list-group list-group-horizontal borderless"></ul>
+                <ul id="pokTypes" class="list-group list-group-horizontal borderless mt-3"></ul>
             </div>
             <div class="col-2"></div>
         </div>
@@ -60,12 +57,12 @@
                 <table class="table table-bordered mt-3">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">HP</th>
-                            <th scope="col">Attack</th>
-                            <th scope="col">Defense</th>
-                            <th scope="col">Sp. Attack</th>
-                            <th scope="col">Sp. Defense</th>
-                            <th scope="col">Speed</th>
+                            <th class="text-center" scope="col">HP</th>
+                            <th class="text-center" scope="col">Attack</th>
+                            <th class="text-center" scope="col">Defense</th>
+                            <th class="text-center" scope="col">Sp. Attack</th>
+                            <th class="text-center" scope="col">Sp. Defense</th>
+                            <th class="text-center" scope="col">Speed</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,12 +88,12 @@
             document.getElementById("pokTypes").innerHTML += types;
 
             let td = ""; //Fill the table.
-            td += '<td>' + pokemon.base["HP"] + '</td>';
-            td += '<td>' + pokemon.base["Attack"] + '</td>';
-            td += '<td>' + pokemon.base["Defense"] + '</td>';
-            td += '<td>' + pokemon.base["Sp. Attack"] + '</td>';
-            td += '<td>' + pokemon.base["Sp. Defense"] + '</td>';
-            td += '<td>' + pokemon.base["Speed"] + '</td>';
+            td += '<td class="text-center">' + pokemon.base["HP"] + '</td>';
+            td += '<td class="text-center">' + pokemon.base["Attack"] + '</td>';
+            td += '<td class="text-center">' + pokemon.base["Defense"] + '</td>';
+            td += '<td class="text-center">' + pokemon.base["Sp. Attack"] + '</td>';
+            td += '<td class="text-center">' + pokemon.base["Sp. Defense"] + '</td>';
+            td += '<td class="text-center">' + pokemon.base["Speed"] + '</td>';
 
             document.getElementById("baseTblRow").innerHTML = td;
         }

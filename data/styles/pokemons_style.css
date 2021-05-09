@@ -8,8 +8,13 @@ a {
 }
 
 #pokImg {
-    max-width: 40%;
-    max-height: 40%;
+    width: 300px;
+    height: auto;
+}
+
+#pokImgThumb {
+    width: 200px;
+    height: auto;
 }
 
 .Fire-type {

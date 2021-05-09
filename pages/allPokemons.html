@@ -24,9 +24,6 @@
         <li class="list-group nav-item mt-1">
             <a class="nav-link" href="/pokemons">All Pok&#233;mons</a>
         </li>
-        <li class="list-group nav-item mt-1">
-            <a class="nav-link" href="../#mostViewed">Most viewed Pok&#233;mons</a>
-        </li>
     </ul>
 
     <div class="container">
@@ -49,7 +46,7 @@
             table.innerHTML = "";
             pokemons.forEach(pokemon => {
                 tr += '<tr>'
-                tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/pokemon-data/images/'
+                tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img id="pokImgThumb" src="static/pokemon-data/images/'
                 tr += getFullId(pokemon.id); //Add leading zeroes to ID.
                 tr += '.png" ' + 'class="img-fluid"></a>' + '</td>'
                 tr += '<td> <a href="/pokemons/' + pokemon.id + '">' + '#' + pokemon.id + '&emsp;' + pokemon.name + '</a></td>'
