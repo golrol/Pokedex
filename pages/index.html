@@ -76,19 +76,13 @@
     </div>
 
     <script>
-        fetch('/pokemons/25', {
-            method: 'POST'
-        });
-        fetch('/pokemons/20', {
-            method: 'POST'
-        });
-        fetch('/pokemons/32', {
-            method: 'POST'
-        });
+        // fetch('/api/pokemons/25');
+        // fetch('api/pokemons/20');
+        // fetch('api/pokemons/32');
 
         function printMax3(elem) {
             if (elem[0][1] != 0) {
-                fetch('/pokemons/' + elem[0][0]).then(res => res.json()).then(x => {
+                fetch('api/pokemons/' + elem[0][0]).then(res => res.json()).then(x => {
                     document.getElementById("firstMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     var idPath = ""
                     if (x.id < 10) {
@@ -103,7 +97,7 @@
 
             }
             if (elem[1][1] != 0) {
-                fetch('/pokemons/' + elem[1][0]).then(res => res.json()).then(x => {
+                fetch('api/pokemons/' + elem[1][0]).then(res => res.json()).then(x => {
                     document.getElementById("secondMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     var idPath = ""
                     if (x.id < 10) {
@@ -117,7 +111,7 @@
                 });
             }
             if (elem[2][1] != 0) {
-                fetch('/pokemons/' + elem[2][0]).then(res => res.json()).then(x => {
+                fetch('api/pokemons/' + elem[2][0]).then(res => res.json()).then(x => {
                     document.getElementById("thirdMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     var idPath = ""
                     if (x.id < 10) {

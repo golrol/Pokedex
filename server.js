@@ -27,18 +27,26 @@ function getMax3(arr) {
     return items.slice(0, 3);
 }
 
-app.get('/pokemons/:id', (req, res) => {
-
-    var currentId = req.params.id;
-
-    res.send(pokemons[currentId - 1])
-});
-
-app.post('/pokemons/:id', (req, res) => {
+app.use('/api/pokemons/:id', (req, res) => {
     var currentId = req.params.id;
     popularity[currentId] += 1;
+
     res.send(pokemons[currentId - 1])
 });
+
+app.get('/pokemons/:id', (req, res) => {
+    var currentId = req.params.id;
+
+    res.sendFile(path.resolve("pages/specificPokemon.html"))
+});
+
+
+
+// app.post('/pokemons/:id', (req, res) => {
+//     var currentId = req.params.id;
+//     popularity[currentId] += 1;
+//     res.send(pokemons[currentId - 1])
+// });
 
 app.get('/', (req, res) => res.sendFile(path.resolve("pages/index.html")));
 app.get('/pokemons', (req, res) => res.sendFile(path.resolve("pages/allPokemons.html")));
