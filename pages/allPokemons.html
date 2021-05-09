@@ -9,7 +9,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- External css and js files -->
     <link rel="stylesheet" type="text/css" href="static/styles/pokemons_style.css">
+    <script src="static/scripts/helperFuncs.js"></script>
+
     <title>All Pokemons page</title>
 </head>
 
@@ -32,27 +35,21 @@
     </div>
 
     <script>
-        function createTable(pokemons) {
+        function createTable(pokemons) { //Function to create a table of all the pokemons. 
             var tr = "";
             var table = document.getElementById("mainTable");
             table.innerHTML = "";
             pokemons.forEach(pokemon => {
                 tr += '<tr>'
                 tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/pokemon-data/images/'
-                if (pokemon.id < 10) {
-                    tr += '00' + pokemon.id;
-                } else if (pokemon.id < 100) {
-                    tr += '0' + pokemon.id;
-                } else {
-                    tr += pokemon.id;
-                }
+                tr += getFullId(pokemon.id); //Add leading zeroes to ID.
                 tr += '.png" ' + 'class="img-fluid"></a>' + '</td>'
                 tr += '<td> <a href="/pokemons/' + pokemon.id + '">' + '#' + pokemon.id + '&emsp;' + pokemon.name + '</a></td>'
                 tr += '</tr>'
                 tr += '<tr>'
                 tr += '<td>' + '<ul class="list-group list-group-horizontal">';
                 tp = "";
-                pokemon.type.forEach(t => {
+                pokemon.type.forEach(t => { //Add the type class (for coloring).
                     tp += '<li class="list-group-item mr-2 ' + t + '-type' + '">';
                     tp += t;
                     tp += '</li>';
@@ -65,8 +62,7 @@
             table.innerHTML += tr;
         }
 
-
-        fetch('/all').then(x => x.json()).then(createTable);
+        fetch('/all').then(x => x.json()).then(createTable); //Get json data file of all the pokemons.
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

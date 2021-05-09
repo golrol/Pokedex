@@ -9,7 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- External css and js files -->
     <link rel="stylesheet" type="text/css" href="../static/styles/pokemons_style.css">
+    <script src="../static/scripts/helperFuncs.js"></script>
     <title>Hello, world!</title>
 </head>
 
@@ -18,6 +20,7 @@
         <img src="/static/icon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">Pok&#233;dex
     </a>
 
+    <!-- Create a pokemon page template(updated in script). -->
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
@@ -66,31 +69,20 @@
         </div>
     </div>
 
-
-
-
     <script>
         function updateSpecificPokemon(pokemon) {
             document.getElementById("pokTitle").innerHTML = '#' + pokemon.id + ' ' + pokemon.name;
-            var idPath = ""
-            if (pokemon.id < 10) {
-                idPath += '00' + pokemon.id;
-            } else if (pokemon.id < 100) {
-                idPath += '0' + pokemon.id;
-            } else {
-                idPath += pokemon.id;
-            }
+            var idPath = getFullId(pokemon.id); //Add leading zeroes to ID.
 
             document.getElementById("pokImg").src = '/static/pokemon-data/images/' + idPath + '.png';
 
             let types = "";
-            pokemon.type.forEach(t => {
+            pokemon.type.forEach(t => { //Add the type class (for coloring).
                 types += '<li class="list-group-item mr-2 ' + t + '-type' + '">' + t + '</li>';
-
             });
             document.getElementById("pokTypes").innerHTML += types;
 
-            let td = "";
+            let td = ""; //Fill the table.
             td += '<td>' + pokemon.base["HP"] + '</td>';
             td += '<td>' + pokemon.base["Attack"] + '</td>';
             td += '<td>' + pokemon.base["Defense"] + '</td>';
@@ -99,16 +91,13 @@
             td += '<td>' + pokemon.base["Speed"] + '</td>';
 
             document.getElementById("baseTblRow").innerHTML = td;
-
         }
 
         fetch('../api' + window.location.pathname, {
             method: 'POST'
-        }).then(x => x.json()).then(updateSpecificPokemon);
+        }).then(x => x.json()).then(updateSpecificPokemon); //Get json data of specific pokemon and increse popularity.
     </script>
 
-
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

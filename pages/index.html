@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <!-- External css and js files -->
     <link rel="stylesheet" type="text/css" href="static/styles/index_style.css">
     <script src="static/scripts/helperFuncs.js"></script>
     <title>Home page</title>
@@ -102,7 +103,7 @@
                 document.getElementById("firstMaxPop").href = 'pokemons/' + elem.max1.pokemon.id;
 
                 //Update pokemon's img (as a link).
-                var idPath = getFullId(elem.max1.pokemon.id); //Add leading zeroes.
+                var idPath = getFullId(elem.max1.pokemon.id); //Add leading zeroes to ID.
                 document.getElementById("firstMaxPopImg").src = 'static/pokemon-data/images/' + idPath + '.png';
                 document.getElementById("firstImgLink").href = 'pokemons/' + elem.max1.pokemon.id;
 
@@ -124,7 +125,7 @@
             }
         }
 
-        fetch("/max3").then(res => res.json()).then(updateMax3); //Get top 3 most popular pokemons.
+        fetch("/max3").then(res => res.json()).then(updateMax3); //Get json data of top 3 popular pokemons.
     </script>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
