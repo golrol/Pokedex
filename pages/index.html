@@ -10,7 +10,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="static/styles/index_style.css">
-    <title>Main page</title>
+    <script src="static/scripts/helperFuncs.js"></script>
+    <title>Home page</title>
 </head>
 
 <body>
@@ -47,6 +48,8 @@
             </div>
             <div class="col-2"></div>
         </div>
+
+        <!-- Template table of top 3 pokemons(updated in script). -->
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8 text-center mt-5">
@@ -92,64 +95,38 @@
     </div>
 
     <script>
-        function printMax3(elem) {
+        function updateMax3(elem) { //Function to update the top 3 pokemons.
             if (elem.max1.popularity != 0) {
-                fetch('api/pokemons/' + elem.max1.id).then(res => res.json()).then(x => {
-                    document.getElementById("firstMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
-                    document.getElementById("firstMaxPop").href = 'pokemons/' + x.id;
-                    document.getElementById("firstImgLink").href = 'pokemons/' + x.id;
-                    var idPath = ""
-                    if (x.id < 10) {
-                        idPath += '00' + x.id;
-                    } else if (x.id < 100) {
-                        idPath += '0' + x.id;
-                    } else {
-                        idPath += x.id;
-                    }
-                    document.getElementById("firstMaxPopImg").src = 'static/pokemon-data/images/' + idPath + '.png';
-                });
+                //Update Pokemon's name (as a link).
+                document.getElementById("firstMaxPop").innerHTML = '<h3>' + elem.max1.pokemon.name + '</h3>';
+                document.getElementById("firstMaxPop").href = 'pokemons/' + elem.max1.pokemon.id;
 
+                //Update pokemon's img (as a link).
+                var idPath = getFullId(elem.max1.pokemon.id); //Add leading zeroes.
+                document.getElementById("firstMaxPopImg").src = 'static/pokemon-data/images/' + idPath + '.png';
+                document.getElementById("firstImgLink").href = 'pokemons/' + elem.max1.pokemon.id;
 
                 if (elem.max2.popularity != 0) {
-                    fetch('api/pokemons/' + elem.max2.id).then(res => res.json()).then(x => {
-                        document.getElementById("secondMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
-                        document.getElementById("secondMaxPop").href = 'pokemons/' + x.id;
-                        document.getElementById("secondImgLink").href = 'pokemons/' + x.id;
-                        var idPath = ""
-                        if (x.id < 10) {
-                            idPath += '00' + x.id;
-                        } else if (x.id < 100) {
-                            idPath += '0' + x.id;
-                        } else {
-                            idPath += x.id;
-                        }
-                        document.getElementById("secondMaxPopImg").src = 'static/images/' + idPath + '.png';
-                    });
+                    document.getElementById("secondMaxPop").innerHTML = '<h3>' + elem.max2.pokemon.name + '</h3>';
+                    document.getElementById("secondMaxPop").href = 'pokemons/' + elem.max2.pokemon.id;
+                    var idPath = getFullId(elem.max2.pokemon.id);
+                    document.getElementById("secondMaxPopImg").src = 'static/pokemon-data/images/' + idPath + '.png';
+                    document.getElementById("secondImgLink").href = 'pokemons/' + elem.max2.pokemon.id;
 
                     if (elem.max3.popularity != 0) {
-                        fetch('api/pokemons/' + elem.max3.id).then(res => res.json()).then(x => {
-                            document.getElementById("thirdMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
-                            document.getElementById("thirdMaxPop").href = 'pokemons/' + x.id;
-                            document.getElementById("thirdImgLink").href = 'pokemons/' + x.id;
-                            var idPath = ""
-                            if (x.id < 10) {
-                                idPath += '00' + x.id;
-                            } else if (x.id < 100) {
-                                idPath += '0' + x.id;
-                            } else {
-                                idPath += x.id;
-                            }
-                            document.getElementById("thirdMaxPopImg").src = 'static/pokemon-data/images/' + idPath + '.png';
-                        });
+                        document.getElementById("thirdMaxPop").innerHTML = '<h3>' + elem.max3.pokemon.name + '</h3>';
+                        document.getElementById("thirdMaxPop").href = 'pokemons/' + elem.max3.pokemon.id;
+                        var idPath = getFullId(elem.max3.pokemon.id);
+                        document.getElementById("thirdMaxPopImg").src = 'static/pokemon-data/images/' + idPath + '.png';
+                        document.getElementById("thirdImgLink").href = 'pokemons/' + elem.max3.pokemon.id;
                     }
                 }
             }
         }
 
-        fetch("/max3").then(res => res.json()).then(printMax3);
+        fetch("/max3").then(res => res.json()).then(updateMax3); //Get top 3 most popular pokemons.
     </script>
 
-    <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

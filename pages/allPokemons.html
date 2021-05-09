@@ -31,49 +31,48 @@
 
     </div>
 
-    <!-- Optional JavaScript -->
+    <script>
+        function createTable(pokemons) {
+            var tr = "";
+            var table = document.getElementById("mainTable");
+            table.innerHTML = "";
+            pokemons.forEach(pokemon => {
+                tr += '<tr>'
+                tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/pokemon-data/images/'
+                if (pokemon.id < 10) {
+                    tr += '00' + pokemon.id;
+                } else if (pokemon.id < 100) {
+                    tr += '0' + pokemon.id;
+                } else {
+                    tr += pokemon.id;
+                }
+                tr += '.png" ' + 'class="img-fluid"></a>' + '</td>'
+                tr += '<td> <a href="/pokemons/' + pokemon.id + '">' + '#' + pokemon.id + '&emsp;' + pokemon.name + '</a></td>'
+                tr += '</tr>'
+                tr += '<tr>'
+                tr += '<td>' + '<ul class="list-group list-group-horizontal">';
+                tp = "";
+                pokemon.type.forEach(t => {
+                    tp += '<li class="list-group-item mr-2 ' + t + '-type' + '">';
+                    tp += t;
+                    tp += '</li>';
+                });
+                tr += tp;
+                tr += '</ul>' + '</td>';
+                tr += '</tr>'
+
+            });
+            table.innerHTML += tr;
+        }
+
+
+        fetch('/all').then(x => x.json()).then(createTable);
+    </script>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-
-<script>
-    function createTable(pokemons) {
-        var tr = "";
-        var table = document.getElementById("mainTable");
-        table.innerHTML = "";
-        pokemons.forEach(pokemon => {
-            tr += '<tr>'
-            tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/pokemon-data/images/'
-            if (pokemon.id < 10) {
-                tr += '00' + pokemon.id;
-            } else if (pokemon.id < 100) {
-                tr += '0' + pokemon.id;
-            } else {
-                tr += pokemon.id;
-            }
-            tr += '.png" ' + 'class="img-fluid"></a>' + '</td>'
-            tr += '<td> <a href="/pokemons/' + pokemon.id + '">' + '#' + pokemon.id + '&emsp;' + pokemon.name + '</a></td>'
-            tr += '</tr>'
-            tr += '<tr>'
-            tr += '<td>' + '<ul class="list-group list-group-horizontal">';
-            tp = "";
-            pokemon.type.forEach(t => {
-                tp += '<li class="list-group-item mr-2 ' + t + '-type' + '">';
-                tp += t;
-                tp += '</li>';
-            });
-            tr += tp;
-            tr += '</ul>' + '</td>';
-            tr += '</tr>'
-
-        });
-        table.innerHTML += tr;
-    }
-
-
-    fetch('/all').then(x => x.json()).then(createTable);
-</script>
 
 </html>
