@@ -45,7 +45,7 @@
         table.innerHTML = "";
         pokemons.forEach(pokemon => {
             tr += '<tr>'
-            tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/images/'
+            tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/pokemon-data/images/'
             if (pokemon.id < 10) {
                 tr += '00' + pokemon.id;
             } else if (pokemon.id < 100) {

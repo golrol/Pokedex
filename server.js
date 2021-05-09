@@ -4,9 +4,9 @@ const app = express();
 let count = 0;
 let popularity = {};
 
-app.use('/static', express.static(path.join(__dirname, 'pokemon-data')))
+app.use('/static', express.static(path.join(__dirname, 'data')));
 
-let pokemons = require('./pokemon-data/pokemons.json');
+let pokemons = require('./data/pokemon-data/pokemons.json');
 
 for (pokemon of pokemons) {
     popularity[pokemon.id] = 0;
