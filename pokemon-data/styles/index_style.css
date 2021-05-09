@@ -1,0 +1,17 @@
+body {
+    background-image: url(static/bcgknd.jpg);
+    background-repeat: repeat-x repeat-y;
+}
+
+.table td {
+    text-align: center;
+    vertical-align: middle;
+}
+
+caption {
+    caption-side: top;
+    font-size: 30px;
+    line-height: 36px;
+    color: black;
+    text-align: center;
+}

@@ -52,21 +52,33 @@
                     </caption>
                     <tr>
                         <td class="w-25">
-                            <img id="firstMaxPopImg" src="" class="img-fluid" alt="firstImg">
+                            <a href="" id="firstImgLink">
+                                <img id="firstMaxPopImg" src="" class="img-fluid" alt="">
+                            </a>
                         </td>
-                        <td id="firstMaxPop"></td>
+                        <td>
+                            <a href="" id="firstMaxPop"></a>
+                        </td>
                     </tr>
                     <tr>
                         <td class="w-25">
-                            <img id="secondMaxPopImg" src="" class="img-fluid" alt="secondImg">
+                            <a href="" id="secondImgLink">
+                                <img id="secondMaxPopImg" src="" class="img-fluid" alt="">
+                            </a>
                         </td>
-                        <td id="secondMaxPop"></td>
+                        <td>
+                            <a href="" id="secondMaxPop"></a>
+                        </td>
                     </tr>
                     <tr>
                         <td class="w-25">
-                            <img id="thirdMaxPopImg" src="" class="img-fluid" alt="thirdImg">
+                            <a href="" id="thirdImgLink">
+                                <img id="thirdMaxPopImg" src="" class="img-fluid" alt="">
+                            </a>
                         </td>
-                        <td id="thirdMaxPop"></td>
+                        <td>
+                            <a href="" id="thirdMaxPop"></a>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -84,6 +96,8 @@
             if (elem[0][1] != 0) {
                 fetch('api/pokemons/' + elem[0][0]).then(res => res.json()).then(x => {
                     document.getElementById("firstMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
+                    document.getElementById("firstMaxPop").href = 'pokemons/' + x.id;
+                    document.getElementById("firstImgLink").href = 'pokemons/' + x.id;
                     var idPath = ""
                     if (x.id < 10) {
                         idPath += '00' + x.id;
@@ -99,6 +113,8 @@
             if (elem[1][1] != 0) {
                 fetch('api/pokemons/' + elem[1][0]).then(res => res.json()).then(x => {
                     document.getElementById("secondMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
+                    document.getElementById("secondMaxPop").href = 'pokemons/' + x.id;
+                    document.getElementById("secondImgLink").href = 'pokemons/' + x.id;
                     var idPath = ""
                     if (x.id < 10) {
                         idPath += '00' + x.id;
@@ -113,6 +129,8 @@
             if (elem[2][1] != 0) {
                 fetch('api/pokemons/' + elem[2][0]).then(res => res.json()).then(x => {
                     document.getElementById("thirdMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
+                    document.getElementById("thirdMaxPop").href = 'pokemons/' + x.id;
+                    document.getElementById("thirdImgLink").href = 'pokemons/' + x.id;
                     var idPath = ""
                     if (x.id < 10) {
                         idPath += '00' + x.id;

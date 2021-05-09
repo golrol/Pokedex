@@ -41,10 +41,10 @@ app.get('/pokemons/:id', (req, res) => {
 });
 
 
-
-// app.post('/pokemons/:id', (req, res) => {
+// app.post('/api/pokemons/:id', (req, res) => {
 //     var currentId = req.params.id;
 //     popularity[currentId] += 1;
+//     console.log('added 1 to: ' + currentId)
 //     res.send(pokemons[currentId - 1])
 // });
 

@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" type="text/css" href="static/styles/allPokemons_style.css">
     <title>Hello, world!</title>
 </head>
 
@@ -37,6 +38,36 @@
             </div>
             <div class="col-2"></div>
         </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <ul id="pokTypes" class="list-group list-group-horizontal mt-3"></ul>
+            </div>
+            <div class="col-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col-8">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">HP</th>
+                            <th scope="col">Attack</th>
+                            <th scope="col">Defense</th>
+                            <th scope="col">Sp. Attack</th>
+                            <th scope="col">Sp. Defense</th>
+                            <th scope="col">Speed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="baseTblRow"></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-2"></div>
+        </div>
     </div>
 
 
@@ -53,10 +84,31 @@
             } else {
                 idPath += pokemon.id;
             }
+
             document.getElementById("pokImg").src = '/static/images/' + idPath + '.png';
+
+            let types = "";
+            pokemon.type.forEach(t => {
+                types += '<li class="list-group-item mr-2 ' + t + '-type' + '">' + t + '</li>';
+
+            });
+            document.getElementById("pokTypes").innerHTML += types;
+
+            let td = "";
+            td += '<td>' + pokemon.base["HP"] + '</td>';
+            td += '<td>' + pokemon.base["Attack"] + '</td>';
+            td += '<td>' + pokemon.base["Defense"] + '</td>';
+            td += '<td>' + pokemon.base["Sp. Attack"] + '</td>';
+            td += '<td>' + pokemon.base["Sp. Defense"] + '</td>';
+            td += '<td>' + pokemon.base["Speed"] + '</td>';
+
+            document.getElementById("baseTblRow").innerHTML = td;
+
         }
 
-        fetch('/api' + window.location.pathname).then(x => x.json()).then(updateSpecificPokemon);
+        fetch('/api' + window.location.pathname, {
+            method: 'POST'
+        }).then(x => x.json()).then(updateSpecificPokemon);
     </script>
 
 
