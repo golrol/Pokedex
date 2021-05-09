@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <a class="navbar-brand" href="../">
+        <img src="/static/icon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">Pok&#233;dex
+    </a>
+
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
@@ -23,23 +27,7 @@
             <div class="col-2"></div>
         </div>
 
-        <table id="mainTable" class="table table-bordered mt-5">
-            <tr>
-                <td class="w-25" rowspan="2">
-                    <img src="" class="img-fluid" alt="firstImg">
-                </td>
-                <td></td>
-            </tr>
-
-            <tr>
-                <td>
-                    <ul class="list-group list-group-horizontal borderless">
-                        <li class="list-group-item mr-2"></li>
-                        <li class="list-group-item mr-2"></li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
+        <table id="mainTable" class="table table-border mt-5"></table>
 
     </div>
 
@@ -57,7 +45,7 @@
         table.innerHTML = "";
         pokemons.forEach(pokemon => {
             tr += '<tr>'
-            tr += '<td class="w-25" rowspan="2">' + '<img src="static/images/'
+            tr += '<td class="w-25" rowspan="2">' + '<a href="/pokemons/' + pokemon.id + '"><img src="static/images/'
             if (pokemon.id < 10) {
                 tr += '00' + pokemon.id;
             } else if (pokemon.id < 100) {
@@ -65,11 +53,11 @@
             } else {
                 tr += pokemon.id;
             }
-            tr += '.png" ' + 'class="img-fluid" alt="firstImg">' + '</td>'
+            tr += '.png" ' + 'class="img-fluid"></a>' + '</td>'
             tr += '<td> <a href="/pokemons/' + pokemon.id + '">' + '#' + pokemon.id + '&emsp;' + pokemon.name + '</a></td>'
             tr += '</tr>'
             tr += '<tr>'
-            tr += '<td>' + '<ul class="list-group list-group-horizontal borderless">';
+            tr += '<td>' + '<ul class="list-group list-group-horizontal">';
             tp = "";
             pokemon.type.forEach(t => {
                 tp += '<li class="list-group-item mr-2 ' + t + '-type' + '">';

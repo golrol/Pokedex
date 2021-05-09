@@ -1,5 +1,9 @@
+a {
+    color: black;
+}
+
 body {
-    background-image: url(static/bcgknd.jpg);
+    background-image: url(/static/bcgknd.jpg);
     background-repeat: repeat-x repeat-y;
 }
 

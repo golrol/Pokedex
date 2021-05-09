@@ -14,6 +14,10 @@
 </head>
 
 <body>
+    <a class="navbar-brand" href="/">
+        <img src="/static/icon.jpg" width="30" height="30" class="d-inline-block align-top" alt="">Pok&#233;dex
+    </a>
+
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
@@ -89,8 +93,8 @@
 
     <script>
         function printMax3(elem) {
-            if (elem[0][1] != 0) {
-                fetch('/pokemons/max3/' + elem[0][0]).then(res => res.json()).then(x => {
+            if (elem.max1.popularity != 0) {
+                fetch('api/pokemons/' + elem.max1.id).then(res => res.json()).then(x => {
                     document.getElementById("firstMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     document.getElementById("firstMaxPop").href = 'pokemons/' + x.id;
                     document.getElementById("firstImgLink").href = 'pokemons/' + x.id;
@@ -105,38 +109,40 @@
                     document.getElementById("firstMaxPopImg").src = 'static/images/' + idPath + '.png';
                 });
 
-            }
-            if (elem[1][1] != 0) {
-                fetch('/pokemons/max3/' + elem[1][0]).then(res => res.json()).then(x => {
-                    document.getElementById("secondMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
-                    document.getElementById("secondMaxPop").href = 'pokemons/' + x.id;
-                    document.getElementById("secondImgLink").href = 'pokemons/' + x.id;
-                    var idPath = ""
-                    if (x.id < 10) {
-                        idPath += '00' + x.id;
-                    } else if (x.id < 100) {
-                        idPath += '0' + x.id;
-                    } else {
-                        idPath += x.id;
+
+                if (elem.max2.popularity != 0) {
+                    fetch('api/pokemons/' + elem.max2.id).then(res => res.json()).then(x => {
+                        document.getElementById("secondMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
+                        document.getElementById("secondMaxPop").href = 'pokemons/' + x.id;
+                        document.getElementById("secondImgLink").href = 'pokemons/' + x.id;
+                        var idPath = ""
+                        if (x.id < 10) {
+                            idPath += '00' + x.id;
+                        } else if (x.id < 100) {
+                            idPath += '0' + x.id;
+                        } else {
+                            idPath += x.id;
+                        }
+                        document.getElementById("secondMaxPopImg").src = 'static/images/' + idPath + '.png';
+                    });
+
+                    if (elem.max3.popularity != 0) {
+                        fetch('api/pokemons/' + elem.max3.id).then(res => res.json()).then(x => {
+                            document.getElementById("thirdMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
+                            document.getElementById("thirdMaxPop").href = 'pokemons/' + x.id;
+                            document.getElementById("thirdImgLink").href = 'pokemons/' + x.id;
+                            var idPath = ""
+                            if (x.id < 10) {
+                                idPath += '00' + x.id;
+                            } else if (x.id < 100) {
+                                idPath += '0' + x.id;
+                            } else {
+                                idPath += x.id;
+                            }
+                            document.getElementById("thirdMaxPopImg").src = 'static/images/' + idPath + '.png';
+                        });
                     }
-                    document.getElementById("secondMaxPopImg").src = 'static/images/' + idPath + '.png';
-                });
-            }
-            if (elem[2][1] != 0) {
-                fetch('/pokemons/max3/' + elem[2][0]).then(res => res.json()).then(x => {
-                    document.getElementById("thirdMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
-                    document.getElementById("thirdMaxPop").href = 'pokemons/' + x.id;
-                    document.getElementById("thirdImgLink").href = 'pokemons/' + x.id;
-                    var idPath = ""
-                    if (x.id < 10) {
-                        idPath += '00' + x.id;
-                    } else if (x.id < 100) {
-                        idPath += '0' + x.id;
-                    } else {
-                        idPath += x.id;
-                    }
-                    document.getElementById("thirdMaxPopImg").src = 'static/images/' + idPath + '.png';
-                });
+                }
             }
         }
 

@@ -1,3 +1,17 @@
+body {
+    background-image: url(/static/bcgknd.jpg);
+    background-repeat: repeat-x repeat-y;
+}
+
+a {
+    color: black;
+}
+
+#pokImg {
+    max-width: 40%;
+    max-height: 40%;
+}
+
 .Fire-type {
     background-color: red;
 }
