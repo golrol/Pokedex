@@ -40,6 +40,12 @@ app.get('/pokemons/:id', (req, res) => {
     res.sendFile(path.resolve("pages/specificPokemon.html"))
 });
 
+app.get('/pokemons/max3/:id', (req, res) => {
+    var currentId = req.params.id;
+
+    res.send(pokemons[currentId - 1])
+});
+
 
 // app.post('/api/pokemons/:id', (req, res) => {
 //     var currentId = req.params.id;

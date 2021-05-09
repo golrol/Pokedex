@@ -88,13 +88,9 @@
     </div>
 
     <script>
-        // fetch('/api/pokemons/25');
-        // fetch('api/pokemons/20');
-        // fetch('api/pokemons/32');
-
         function printMax3(elem) {
             if (elem[0][1] != 0) {
-                fetch('api/pokemons/' + elem[0][0]).then(res => res.json()).then(x => {
+                fetch('/pokemons/max3/' + elem[0][0]).then(res => res.json()).then(x => {
                     document.getElementById("firstMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     document.getElementById("firstMaxPop").href = 'pokemons/' + x.id;
                     document.getElementById("firstImgLink").href = 'pokemons/' + x.id;
@@ -111,7 +107,7 @@
 
             }
             if (elem[1][1] != 0) {
-                fetch('api/pokemons/' + elem[1][0]).then(res => res.json()).then(x => {
+                fetch('/pokemons/max3/' + elem[1][0]).then(res => res.json()).then(x => {
                     document.getElementById("secondMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     document.getElementById("secondMaxPop").href = 'pokemons/' + x.id;
                     document.getElementById("secondImgLink").href = 'pokemons/' + x.id;
@@ -127,7 +123,7 @@
                 });
             }
             if (elem[2][1] != 0) {
-                fetch('api/pokemons/' + elem[2][0]).then(res => res.json()).then(x => {
+                fetch('/pokemons/max3/' + elem[2][0]).then(res => res.json()).then(x => {
                     document.getElementById("thirdMaxPop").innerHTML = '<h3>' + x.name + '</h3>';
                     document.getElementById("thirdMaxPop").href = 'pokemons/' + x.id;
                     document.getElementById("thirdImgLink").href = 'pokemons/' + x.id;
