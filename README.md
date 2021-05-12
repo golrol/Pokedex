@@ -2,13 +2,17 @@
 ## Running instructions ##
 1. Download repo
 ```
-git clone https://github.com/golrol/Pokedex
+git clone https://github.com/golrol/Pokedex ~/Desktop/Pokedex
 ```
-2. Install required modules
+2. Navigate into the directory
+```
+cd ~/Desktop/Pokedex
+```
+3. Install required modules
 ```
 npm install
 ```
-3. Run the server
+4. Run the server
 ```
 npm start
 ```
