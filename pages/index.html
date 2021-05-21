@@ -103,12 +103,9 @@
 
     <script>
         function updateMax3(max3) { //Function to update the top 3 pokemons.
-            console.log(max3);
             max3.forEach(maxPokemon => {
                 if (maxPokemon.popularity != 0) {
                     //Update Pokemon's name (as a link).
-                    let x = `${maxPokemon.index}MaxPop`;
-                    console.log(x);
                     document.getElementById(`${maxPokemon.index}MaxPop`).innerHTML = `<h3>${maxPokemon.pokemon.name} </h3>`;
                     document.getElementById(`${maxPokemon.index}MaxPop`).href = `pokemons/${maxPokemon.pokemon.id}`;
 
@@ -116,7 +113,6 @@
                     var idPath = getFullId(maxPokemon.pokemon.id); //Add leading zeroes to ID.
                     document.getElementById(`${maxPokemon.index}MaxPopImg`).src = `static/pokemon-data/images/${idPath}.png`;
                     document.getElementById(`${maxPokemon.index}ImgLink`).href = `pokemons/${maxPokemon.pokemon.id}`;
-
                 }
             });
         }
