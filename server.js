@@ -47,20 +47,22 @@ function getMax3(arr) { //Helper function that get's the 3 most popular pokemons
     //Create a new array with only the first 3 items
     let max3Array = items.slice(0, 3);
 
-    let retVal = {
-        "max1": {
+    let retVal = [{
+            "index": "1",
             "pokemon": pokemons[max3Array[0][0] - 1],
             "popularity": max3Array[0][1]
         },
-        "max2": {
+        {
+            "index": "2",
             "pokemon": pokemons[max3Array[1][0] - 1],
             "popularity": max3Array[1][1]
         },
-        "max3": {
+        {
+            "index": "3",
             "pokemon": pokemons[max3Array[2][0] - 1],
             "popularity": max3Array[2][1]
         }
-    };
+    ];
 
     return retVal;
 }

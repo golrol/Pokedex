@@ -76,24 +76,24 @@
 
     <script>
         function updateSpecificPokemon(pokemon) {
-            document.getElementById("pokTitle").innerHTML = '#' + pokemon.id + ' ' + pokemon.name;
+            document.getElementById("pokTitle").innerHTML = `#${pokemon.id} ${pokemon.name}`;
             var idPath = getFullId(pokemon.id); //Add leading zeroes to ID.
 
-            document.getElementById("pokImg").src = '/static/pokemon-data/images/' + idPath + '.png';
+            document.getElementById("pokImg").src = `/static/pokemon-data/images/${idPath}.png`;
 
             let types = "";
-            pokemon.type.forEach(t => { //Add the type class (for coloring).
-                types += '<li class="list-group-item mr-2 ' + t + '-type' + '">' + t + '</li>';
+            pokemon.type.forEach(currentType => { //Add the type class (for coloring).
+                types += `<li class="list-group-item mr-2 ${currentType}-type">${currentType}</li>`;
             });
             document.getElementById("pokTypes").innerHTML += types;
 
             let td = ""; //Fill the table.
-            td += '<td class="text-center">' + pokemon.base["HP"] + '</td>';
-            td += '<td class="text-center">' + pokemon.base["Attack"] + '</td>';
-            td += '<td class="text-center">' + pokemon.base["Defense"] + '</td>';
-            td += '<td class="text-center">' + pokemon.base["Sp. Attack"] + '</td>';
-            td += '<td class="text-center">' + pokemon.base["Sp. Defense"] + '</td>';
-            td += '<td class="text-center">' + pokemon.base["Speed"] + '</td>';
+            td += `<td class="text-center"> ${pokemon.base["HP"]} </td>`;
+            td += `<td class="text-center"> ${pokemon.base["Attack"]} </td>`;
+            td += `<td class="text-center"> ${pokemon.base["Defense"]} </td>`;
+            td += `<td class="text-center"> ${pokemon.base["Sp. Attack"]} </td>`;
+            td += `<td class="text-center"> ${pokemon.base["Sp. Defense"]} </td>`;
+            td += `<td class="text-center"> ${pokemon.base["Speed"]} </td>`;
 
             document.getElementById("baseTblRow").innerHTML = td;
         }
