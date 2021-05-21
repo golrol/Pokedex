@@ -64,7 +64,7 @@ function getMax3(arr) { //Helper function that get's the 3 most popular pokemons
         }
     ];
 
-    return retVal;
+    return retVal; //return as json object for ease of use.
 }
 
 app.get('/max3', (req, res) => { //Return json data of top 3 popular pokemons.
