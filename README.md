@@ -1,4 +1,9 @@
 # Pokedex
+## Screen shots ##
+<img width="1392" alt="Homepage" src="https://user-images.githubusercontent.com/58071878/141541797-541c0e76-c34e-42f6-9569-36cd74057c40.png">
+<img width="1392" alt="All pokemons list" src="https://user-images.githubusercontent.com/58071878/141541882-4d297746-501d-4364-b6f1-834e1b1e9c1f.png">
+<img width="1392" alt="Most viewed" src="https://user-images.githubusercontent.com/58071878/141541912-4a4102e3-39c6-4913-8638-b1b787cb1a67.png">
+
 ## Running instructions ##
 1. Download repo
 ```
